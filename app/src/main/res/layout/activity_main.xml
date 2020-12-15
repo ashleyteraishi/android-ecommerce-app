@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity"
+        tools:ignore="ExtraText">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/sale_background" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HOLIDAY SALE"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintHorizontal_bias="0.512"
+            app:layout_constraintStart_toStartOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:fontFamily="@font/abril_fatface"
+            android:gravity="center"
+            android:text="Up to 70% Off"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_shop_sale"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btn_shop_sale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="false"
+            android:text="Shop Now"
+            app:backgroundTint="@color/green_light"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/featured_recycler"
+            android:layout_width="385dp"
+            android:layout_height="346dp"
+            android:layout_marginTop="8dp"
+            android:clickable="false"
+            android:scrollbars="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/abril_fatface"
+            android:text="Featured Products"
+            android:textColor="@color/green"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        // shop all
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_shop_all"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/brown_light"
+            app:cardBackgroundColor="@color/green_light"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/cv_bonsai"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/featured_recycler">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/abril_fatface"
+                android:gravity="center"
+                android:text="Shop All"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </androidx.cardview.widget.CardView>
+
+        // bonsai
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_bonsai"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/brown_light"
+            app:cardBackgroundColor="@color/green_light"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/featured_recycler">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/abril_fatface"
+                android:gravity="center"
+                android:text="Bonsai"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </androidx.cardview.widget.CardView>
+
+        // flowers
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_flowers"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/brown_light"
+            app:cardBackgroundColor="@color/green_light"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cv_bonsai"
+            app:layout_constraintTop_toBottomOf="@+id/featured_recycler">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/abril_fatface"
+                android:gravity="center"
+                android:text="Flowers"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </androidx.cardview.widget.CardView>
+
+        // house plants
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_house_plants"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/brown_light"
+            android:paddingBottom="16dp"
+            app:cardBackgroundColor="@color/green_light"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/cv_succulents"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cv_shop_all">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/abril_fatface"
+                android:gravity="center"
+                android:text="House Plants"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </androidx.cardview.widget.CardView>
+
+        // bonsai
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_succulents"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/brown_light"
+            app:cardBackgroundColor="@color/green_light"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cv_bonsai">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/abril_fatface"
+                android:gravity="center"
+                android:text="Succulents"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </androidx.cardview.widget.CardView>
+
+        // flowers
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_sale"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/brown_light"
+            app:cardBackgroundColor="@color/green_light"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cv_succulents"
+            app:layout_constraintTop_toBottomOf="@+id/cv_flowers">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/abril_fatface"
+                android:gravity="center"
+                android:text="Sale"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
