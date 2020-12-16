@@ -7,6 +7,8 @@ public class Product implements Parcelable
 {
     String product_name;
     String product_price;
+
+    String product_description;
     Integer image_url;
 
     public Product(String product_name, String product_price, Integer image_url) {
@@ -18,6 +20,7 @@ public class Product implements Parcelable
     protected Product(Parcel in) {
         product_name = in.readString();
         product_price = in.readString();
+        product_description = in.readString();
         if (in.readByte() == 0) {
             image_url = null;
         } else {
@@ -61,6 +64,14 @@ public class Product implements Parcelable
         this.image_url = image_url;
     }
 
+    public String getProduct_description() {
+        return product_description;
+    }
+
+    public void setProduct_description(String product_description) {
+        this.product_description = product_description;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -70,6 +81,7 @@ public class Product implements Parcelable
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(product_name);
         dest.writeString(product_price);
+        dest.writeString(product_description);
         if (image_url == null) {
             dest.writeByte((byte) 0);
         } else {
