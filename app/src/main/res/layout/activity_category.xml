@@ -44,28 +44,29 @@
 
     <TextView
         android:id="@+id/tv_category_name"
-        android:layout_width="191dp"
-        android:layout_height="73dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/abril_fatface"
-        android:gravity="center_vertical"
+        android:gravity="center|center_vertical"
         android:text="Catg. Name"
         android:textColor="@color/green"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/category_recycler"
-        android:layout_width="375dp"
-        android:layout_height="450dp"
+        android:layout_width="371dp"
+        android:layout_height="488dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_category_name"
-        app:layout_constraintVertical_bias="0.212" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_name" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

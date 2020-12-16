@@ -64,8 +64,7 @@ public class MainActivity extends AppCompatActivity implements FeaturedAdapter.O
         setUpCategorySale(list_all_products);
 
         createFeaturedView(list_all_products, layoutManager);
-
-        btn_show_all.setOnClickListener(this::onShopAllClick);
+        setOnClickListeners();
     }
 
     private void setUpListAllProducts(List<Product> list_all_products)
@@ -190,9 +189,42 @@ public class MainActivity extends AppCompatActivity implements FeaturedAdapter.O
         startActivity(intent);
     }
 
-    private void onShopAllClick(View v) {
-        Intent intent = new Intent(this, CategoryActivity.class);
-        intent.putExtra("selected_category", shop_all);
-        startActivity(intent);
+    private void setOnClickListeners()
+    {
+        btn_show_all.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+            intent.putExtra("selected_category", shop_all);
+            startActivity(intent);
+        });
+        cv_shop_all.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+            intent.putExtra("selected_category", shop_all);
+            startActivity(intent);
+        });
+        cv_bonsai.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+            intent.putExtra("selected_category", bonsai);
+            startActivity(intent);
+        });
+        cv_flowers.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+            intent.putExtra("selected_category", flowers);
+            startActivity(intent);
+        });
+        cv_house_plants.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+            intent.putExtra("selected_category", house_plants);
+            startActivity(intent);
+        });
+        cv_succulents.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+            intent.putExtra("selected_category", succulents);
+            startActivity(intent);
+        });
+        cv_sale.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+            intent.putExtra("selected_category", sale);
+            startActivity(intent);
+        });
     }
 }

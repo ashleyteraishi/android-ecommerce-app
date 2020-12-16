@@ -1,6 +1,7 @@
 package com.example.plantshopping.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.plantshopping.CategoryActivity;
 import com.example.plantshopping.R;
 import com.example.plantshopping.model.Category;
 import com.example.plantshopping.model.Product;
@@ -81,4 +83,5 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     {
         void onCategoryClick(int position);
     }
+
 }
