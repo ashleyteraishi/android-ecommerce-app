@@ -21,14 +21,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 {
     Context context;
     Category category;
-    List<Product> productList = new ArrayList<>();
+    List<Product> productList;
+    String category_name = "";
 
     private OnCategoryListener onCategoryListener;
 
-    public CategoryAdapter(Context context, List<Product> productList, OnCategoryListener onCategoryListener) {
+    public CategoryAdapter(Context context, Category category, OnCategoryListener onCategoryListener) {
         this.context = context;
-        this.productList = productList;
+        this.category = category;
         this.onCategoryListener = onCategoryListener;
+        productList = category.getCategory_list();
+        category_name = category.getCategoryName();
     }
 
     @NonNull

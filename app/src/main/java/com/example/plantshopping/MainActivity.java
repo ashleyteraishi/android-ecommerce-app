@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,8 +29,9 @@ public class MainActivity extends AppCompatActivity implements FeaturedAdapter.O
     ImageView iv_product_image;
     TextView tv_product_name, tv_product_price;
     CardView cv_shop_all, cv_bonsai, cv_flowers, cv_house_plants, cv_succulents, cv_sale;
+    Button btn_show_all;
 
-    List<Product> list_all_products = new ArrayList<Product>();
+    List<Product> list_all_products = new ArrayList<>();
     List<Product> list_featured_products = new ArrayList<>();
 
     Category shop_all, bonsai, flowers, house_plants, succulents, sale;
@@ -48,13 +51,11 @@ public class MainActivity extends AppCompatActivity implements FeaturedAdapter.O
         cv_house_plants = findViewById(R.id.cv_house_plants);
         cv_succulents = findViewById(R.id.cv_succulents);
         cv_sale = findViewById(R.id.cv_sale);
+        btn_show_all = findViewById(R.id.btn_show_all);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
 
-        if(list_all_products == null)
-        {
-            setUpListAllProducts(list_all_products);
-        }
+        setUpListAllProducts(list_all_products);
 
         setUpCategoryBonsai(list_all_products);
         setUpCategoryFlowers(list_all_products);
@@ -64,30 +65,7 @@ public class MainActivity extends AppCompatActivity implements FeaturedAdapter.O
 
         createFeaturedView(list_all_products, layoutManager);
 
-        // best sellers
-        // aloe vera
-        //list_bestselling_products.add(list_all_products.get(8));
-        // black echeveria
-        //list_bestselling_products.add(list_all_products.get(9));
-        // birds of paradise
-        //list_bestselling_products.add(list_all_products.get(5));
-        //bestsellingView = findViewById(R.id.best_sellers_recycler);
-        //bestsellingView.setLayoutManager(layoutManager);
-        //bestsellingAdapter = new BestsellingAdapter(this, list_bestselling_products);
-        //bestsellingView.setAdapter(bestsellingAdapter);
-
-        // sale products
-        // red anthurium
-        //list_sale_products.add(list_all_products.get(4));
-        // snake plant
-        //list_sale_products.add(list_all_products.get(7));
-        // devils ivy
-        //list_sale_products.add(list_all_products.get(6));
-        //saleView = findViewById(R.id.sale_recycler);
-        //saleView.setLayoutManager(layoutManager);
-        //saleAdapter = new SaleAdapter(this, list_sale_products);
-        //saleView.setAdapter(saleAdapter);
-
+        btn_show_all.setOnClickListener(this::onShopAllClick);
     }
 
     private void setUpListAllProducts(List<Product> list_all_products)
@@ -188,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements FeaturedAdapter.O
         temp.add(list_all_products.get(9));
 
         // add the two bonsai plants to the bonsai category
-        succulents = new Category("Succulents", temp);
+        sale = new Category("Sale", temp);
     }
 
     private void createFeaturedView(List<Product> list_all_products, RecyclerView.LayoutManager layoutManager)
@@ -209,6 +187,12 @@ public class MainActivity extends AppCompatActivity implements FeaturedAdapter.O
     public void onFeaturedClick(int position) {
         Intent intent = new Intent(this, ProductDetailsActivity.class);
         intent.putExtra("selected_product", list_featured_products.get(position));
+        startActivity(intent);
+    }
+
+    private void onShopAllClick(View v) {
+        Intent intent = new Intent(this, CategoryActivity.class);
+        intent.putExtra("selected_category", shop_all);
         startActivity(intent);
     }
 }

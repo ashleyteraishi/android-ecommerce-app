@@ -1,8 +1,12 @@
 package com.example.plantshopping.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
-public class Category {
+public class Category implements Parcelable
+{
     String category_name;
     List<Product> category_list;
 
@@ -10,6 +14,23 @@ public class Category {
         this.category_name = category_name;
         this.category_list = category_list;
     }
+
+    protected Category(Parcel in) {
+        category_name = in.readString();
+        category_list = in.createTypedArrayList(Product.CREATOR);
+    }
+
+    public static final Creator<Category> CREATOR = new Creator<Category>() {
+        @Override
+        public Category createFromParcel(Parcel in) {
+            return new Category(in);
+        }
+
+        @Override
+        public Category[] newArray(int size) {
+            return new Category[size];
+        }
+    };
 
     public String getCategoryName() {
         return category_name;
@@ -45,4 +66,14 @@ public class Category {
         return category_name.equals(that.category_name);
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(category_name);
+        dest.writeTypedList(category_list);
+    }
 }

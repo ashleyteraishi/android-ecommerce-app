@@ -2,10 +2,6 @@ package com.example.plantshopping.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class Product implements Parcelable
 {
