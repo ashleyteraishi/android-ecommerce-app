@@ -10,29 +10,11 @@ public class Product implements Parcelable
     String product_description;
     Integer image_url;
 
-    // default (zero argument) constructor
-    public Product()
-    {
-        this.product_name = "Product not Found";
-        this.product_price = "Price not Found";
-        this.product_description = "N/A";
-        this.image_url = null;
-    }
-
     // 3 argument constructor
     public Product(String product_name, String product_price, Integer image_url)
     {
         this.product_name = product_name;
         this.product_price = product_price;
-        this.image_url = image_url;
-    }
-
-    // 4 argument constructor
-    public Product(String product_name, String product_price, String product_description, Integer image_url)
-    {
-        this.product_name = product_name;
-        this.product_price = product_price;
-        this.product_description = product_description;
         this.image_url = image_url;
     }
 

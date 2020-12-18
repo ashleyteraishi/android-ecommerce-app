@@ -46,7 +46,7 @@ public class CategoryActivity extends AppCompatActivity
             // set the category adapter and the page text
             categoryAdapter = new CategoryAdapter(this, category, this::onCategoryClick);
             categoryView.setAdapter(categoryAdapter);
-            tv_category_name.setText(category.getCategoryName());
+            tv_category_name.setText(category.getCategory_name());
         }
     }
 

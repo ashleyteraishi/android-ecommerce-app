@@ -5,7 +5,6 @@ import android.os.Parcelable;
 
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Category implements Parcelable
@@ -14,13 +13,6 @@ public class Category implements Parcelable
     String category_name;
     // ArrayList of all products in the category
     List<Product> category_list;
-
-    // default (no argument) constructor
-    public Category()
-    {
-        this.category_name = "Empty Category";
-        this.category_list = new ArrayList<>();
-    }
 
     // 2 argument constructor - set the category with the given name and list
     public Category(String category_name, List<Product> category_list)
@@ -50,12 +42,12 @@ public class Category implements Parcelable
         }
     };
 
-    public String getCategoryName()
+    public String getCategory_name()
     {
         return category_name;
     }
 
-    public void setCategoryName(String category_name)
+    public void setCategory_name(String category_name)
     {
         this.category_name = category_name;
     }

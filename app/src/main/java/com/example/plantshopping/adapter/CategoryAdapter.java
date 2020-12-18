@@ -31,7 +31,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         this.category = category;
         this.onCategoryListener = onCategoryListener;
         productList = category.getCategory_list();
-        category_name = category.getCategoryName();
+        category_name = category.getCategory_name();
     }
 
     @NonNull
