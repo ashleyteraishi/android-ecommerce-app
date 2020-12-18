@@ -1,7 +1,6 @@
 package com.example.plantshopping.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.plantshopping.CategoryActivity;
 import com.example.plantshopping.R;
 import com.example.plantshopping.model.Category;
 import com.example.plantshopping.model.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
@@ -24,11 +21,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     Context context;
     Category category;
     List<Product> productList;
-    String category_name = "";
+    String category_name;
 
-    private OnCategoryListener onCategoryListener;
+    private final OnCategoryListener onCategoryListener;
 
-    public CategoryAdapter(Context context, Category category, OnCategoryListener onCategoryListener) {
+    public CategoryAdapter(Context context, Category category, OnCategoryListener onCategoryListener)
+    {
         this.context = context;
         this.category = category;
         this.onCategoryListener = onCategoryListener;
@@ -38,13 +36,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     @NonNull
     @Override
-    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
+        // use the category_product_display layout for the products
         View view = LayoutInflater.from(context).inflate(R.layout.category_product_display, parent, false);
         return new CategoryViewHolder(view, onCategoryListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position)
+    {
+        // set product image, name, and price
         holder.product_image.setImageResource(productList.get(position).getImage_url());
         holder.product_name.setText(productList.get(position).getProduct_name());
         holder.product_price.setText(productList.get(position).getProduct_price());
@@ -56,13 +58,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         return productList.size();
     }
 
+    // View Holder for the Category RecyclerView
     public static final class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         public ImageView product_image;
         public TextView product_name, product_price;
         OnCategoryListener onCategoryListener;
 
-        public CategoryViewHolder(@NonNull View itemView, OnCategoryListener onCategoryListener) {
+        public CategoryViewHolder(@NonNull View itemView, OnCategoryListener onCategoryListener)
+        {
             super(itemView);
 
             product_image = itemView.findViewById(R.id.iv_product_image_cat);
@@ -74,7 +78,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         }
 
         @Override
-        public void onClick(View v) {
+        public void onClick(View v)
+        {
+            // get position of the item clicked
             onCategoryListener.onCategoryClick(getAdapterPosition());
         }
     }

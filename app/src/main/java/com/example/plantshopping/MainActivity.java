@@ -1,16 +1,15 @@
 package com.example.plantshopping;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.plantshopping.adapter.FeaturedAdapter;
 import com.example.plantshopping.model.Category;
@@ -19,18 +18,28 @@ import com.example.plantshopping.model.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements FeaturedAdapter.OnFeaturedListener {
-
-    FeaturedAdapter featuredAdapter;
+public class MainActivity extends AppCompatActivity implements FeaturedAdapter.OnFeaturedListener
+{
+    // recyclerview to display featured items
     RecyclerView featuredView;
+    // adapter for the featured item recyclerview
+    FeaturedAdapter featuredAdapter;
+
+    // product information
     ImageView iv_product_image;
     TextView tv_product_name, tv_product_price;
+
+    // card views for category selection
     CardView cv_shop_all, cv_bonsai, cv_flowers, cv_house_plants, cv_succulents, cv_sale;
+
+    // button to show all items
     Button btn_show_all;
 
+    // ArrayList of all products, and an ArrayList of featured products
     List<Product> list_all_products = new ArrayList<>();
     List<Product> list_featured_products = new ArrayList<>();
 
+    // all categories
     Category shop_all, bonsai, flowers, house_plants, succulents, sale;
 
     @Override
@@ -38,18 +47,12 @@ public class MainActivity extends AppCompatActivity implements FeaturedAdapter.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // the featured items recycler view will be displayed horizontally
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
 
         instantiateComponents();
-
         setUpListAllProducts(list_all_products);
-
-        setUpCategoryBonsai(list_all_products);
-        setUpCategoryFlowers(list_all_products);
-        setUpCategoryHousePlants(list_all_products);
-        setUpCategorySucculents(list_all_products);
-        setUpCategorySale(list_all_products);
-
+        setUpCategories(list_all_products);
         createFeaturedView(list_all_products, layoutManager);
         setOnClickListeners();
     }
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements FeaturedAdapter.O
         btn_show_all = findViewById(R.id.btn_show_all);
     }
 
+    // create all products and add them to the ArrayList
     private void setUpListAllProducts(List<Product> list_all_products)
     {
         // add all products
@@ -174,61 +178,47 @@ public class MainActivity extends AppCompatActivity implements FeaturedAdapter.O
         shop_all = new Category("Shop All", list_all_products);
     }
 
-    private void setUpCategoryBonsai(List<Product> list_all_products)
+    private void setUpCategories(List<Product> list_all_products)
     {
+        // ArrayList to contain temporary values
         List<Product> temp = new ArrayList<>();
 
+        // BONSAI
         // the two bonsai plants are at indexes 0 and 1 in all products
         temp.add(list_all_products.get(0));
         temp.add(list_all_products.get(1));
-
         // add the two bonsai plants to the bonsai category
         bonsai = new Category("Bonsai", temp);
-    }
+        temp.clear();
 
-    private void setUpCategoryFlowers(List<Product> list_all_products)
-    {
-        List<Product> temp = new ArrayList<>();
-
+        // FLOWERS
         // the three flowers are at indexes 2, 3, and 4 in all products
         temp.add(list_all_products.get(2));
         temp.add(list_all_products.get(3));
         temp.add(list_all_products.get(4));
-
         // add the two bonsai plants to the bonsai category
         flowers = new Category("Flowers", temp);
-    }
+        temp.clear();
 
-    private void setUpCategoryHousePlants(List<Product> list_all_products)
-    {
-        List<Product> temp = new ArrayList<>();
-
+        // HOUSE PLANTS
         // the three house plants are at indexes 5, 6, and 7 in all products
         temp.add(list_all_products.get(5));
         temp.add(list_all_products.get(6));
         temp.add(list_all_products.get(7));
-
         // add the two bonsai plants to the bonsai category
         house_plants = new Category("House Plants", temp);
-    }
+        temp.clear();
 
-    private void setUpCategorySucculents(List<Product> list_all_products)
-    {
-        List<Product> temp = new ArrayList<>();
-
+        // SUCCULENTS
         // the three succulents are at indexes 8, 9, and 10 in all products
         temp.add(list_all_products.get(8));
         temp.add(list_all_products.get(9));
         temp.add(list_all_products.get(10));
-
         // add the two bonsai plants to the bonsai category
         succulents = new Category("Succulents", temp);
-    }
+        temp.clear();
 
-    private void setUpCategorySale(List<Product> list_all_products)
-    {
-        List<Product> temp = new ArrayList<>();
-
+        // SALE
         // the three sale items are at indexes 1, 3, and 9
         temp.add(list_all_products.get(1));
         temp.add(list_all_products.get(3));
@@ -238,6 +228,7 @@ public class MainActivity extends AppCompatActivity implements FeaturedAdapter.O
         sale = new Category("Sale", temp);
     }
 
+    // set up the RecyclerView for Featured Items
     private void createFeaturedView(List<Product> list_all_products, RecyclerView.LayoutManager layoutManager)
     {
         // birds of paradise
@@ -252,46 +243,60 @@ public class MainActivity extends AppCompatActivity implements FeaturedAdapter.O
         featuredView.setAdapter(featuredAdapter);
     }
 
+    // when a product from Featured Items has been clicked
     @Override
-    public void onFeaturedClick(int position) {
+    public void onFeaturedClick(int position)
+    {
+        // start ProductDetailsActivity, pass the product that was clicked
         Intent intent = new Intent(this, ProductDetailsActivity.class);
         intent.putExtra("selected_product", list_featured_products.get(position));
         startActivity(intent);
     }
 
+    // on click listeners for category card views and the "show all" button
     private void setOnClickListeners()
     {
-        btn_show_all.setOnClickListener(v -> {
+        // header button onClickListener
+        btn_show_all.setOnClickListener(v ->
+        {
             Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
             intent.putExtra("selected_category", shop_all);
             startActivity(intent);
         });
-        cv_shop_all.setOnClickListener(v -> {
+
+        // card view onClickListeners
+        cv_shop_all.setOnClickListener(v ->
+        {
             Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
             intent.putExtra("selected_category", shop_all);
             startActivity(intent);
         });
-        cv_bonsai.setOnClickListener(v -> {
+        cv_bonsai.setOnClickListener(v ->
+        {
             Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
             intent.putExtra("selected_category", bonsai);
             startActivity(intent);
         });
-        cv_flowers.setOnClickListener(v -> {
+        cv_flowers.setOnClickListener(v ->
+        {
             Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
             intent.putExtra("selected_category", flowers);
             startActivity(intent);
         });
-        cv_house_plants.setOnClickListener(v -> {
+        cv_house_plants.setOnClickListener(v ->
+        {
             Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
             intent.putExtra("selected_category", house_plants);
             startActivity(intent);
         });
-        cv_succulents.setOnClickListener(v -> {
+        cv_succulents.setOnClickListener(v ->
+        {
             Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
             intent.putExtra("selected_category", succulents);
             startActivity(intent);
         });
-        cv_sale.setOnClickListener(v -> {
+        cv_sale.setOnClickListener(v ->
+        {
             Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
             intent.putExtra("selected_category", sale);
             startActivity(intent);

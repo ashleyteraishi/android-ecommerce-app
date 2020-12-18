@@ -3,40 +3,60 @@ package com.example.plantshopping.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Category implements Parcelable
 {
+    // name of the category (Shop All, Flowers, House Plants, etc.)
     String category_name;
+    // ArrayList of all products in the category
     List<Product> category_list;
 
-    public Category(String category_name, List<Product> category_list) {
+    // default (no argument) constructor
+    public Category()
+    {
+        this.category_name = "Empty Category";
+        this.category_list = new ArrayList<>();
+    }
+
+    // 2 argument constructor - set the category with the given name and list
+    public Category(String category_name, List<Product> category_list)
+    {
         this.category_name = category_name;
         this.category_list = category_list;
     }
 
+    // parcelable methods to allow category objects to be passed through an intent
     protected Category(Parcel in) {
         category_name = in.readString();
         category_list = in.createTypedArrayList(Product.CREATOR);
     }
 
-    public static final Creator<Category> CREATOR = new Creator<Category>() {
+    public static final Creator<Category> CREATOR = new Creator<Category>()
+    {
         @Override
-        public Category createFromParcel(Parcel in) {
+        public Category createFromParcel(Parcel in)
+        {
             return new Category(in);
         }
 
         @Override
-        public Category[] newArray(int size) {
+        public Category[] newArray(int size)
+        {
             return new Category[size];
         }
     };
 
-    public String getCategoryName() {
+    public String getCategoryName()
+    {
         return category_name;
     }
 
-    public void setCategoryName(String category_name) {
+    public void setCategoryName(String category_name)
+    {
         this.category_name = category_name;
     }
 
@@ -45,7 +65,8 @@ public class Category implements Parcelable
         return category_list;
     }
 
-    public void setCategory_list(List<Product> category_list) {
+    public void setCategory_list(List<Product> category_list)
+    {
         this.category_list = category_list;
     }
 
@@ -59,11 +80,8 @@ public class Category implements Parcelable
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Category that = (Category) o;
-        return category_name.equals(that.category_name);
+    public boolean equals(@Nullable Object obj) {
+        return super.equals(obj);
     }
 
     @Override

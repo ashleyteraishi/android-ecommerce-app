@@ -9,8 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.plantshopping.model.Product;
 
+
+// activity when a product has been clicked
 public class ProductDetailsActivity extends AppCompatActivity
 {
+    // product info components
     ImageView iv_product_image;
     TextView tv_product_name, tv_product_price, tv_product_description;
 
@@ -24,10 +27,13 @@ public class ProductDetailsActivity extends AppCompatActivity
         tv_product_price = findViewById(R.id.tv_product_price);
         tv_product_description = findViewById(R.id.tv_product_description);
 
+        // if the intent was passed with a product object
         if (getIntent().hasExtra("selected_product"))
         {
+            // get the product
             Product product = getIntent().getParcelableExtra("selected_product");
 
+            // display the product info
             iv_product_image.setImageResource(product.getImage_url());
             tv_product_name.setText(product.getProduct_name());
             tv_product_price.setText(product.getProduct_price());

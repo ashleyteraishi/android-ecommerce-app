@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Plant Shopping</string>
+    <string name="ready_set_grow">Ready, Set, Grow!</string>
+    <string name="shop_plants">Shop Plants</string>
+    <string name="header_background_image">Header Background Image</string>
+    <string name="show_all">show all</string>
+    <string name="featured_products">Featured Products</string>
+    <string name="shop_all">Shop All</string>
+    <string name="bonsai">Bonsai</string>
+    <string name="flowers">Flowers</string>
+    <string name="house_plants">House Plants</string>
+    <string name="succulents">Succulents</string>
+    <string name="sale">Sale</string>
+    <string name="product_background">Product Background</string>
+    <string name="product_image">Product Image</string>
+    <string name="product_name">Product Name</string>
+    <string name="price">Price</string>
+    <string name="product_description">Product Description</string>
+    <string name="add_to_cart">Add To Cart</string>
+    <string name="catg_name">Catg. Name</string>
+    <string name="clickable_product_image">Clickable Product Image</string>
+    <string name="clickable_background">Clickable Background</string>
+    <string name="price_colon">Price:</string>
 </resources>

@@ -19,9 +19,10 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
 {
     Context context;
     List<Product> productList;
-    private OnFeaturedListener onFeaturedListener;
+    private final OnFeaturedListener onFeaturedListener;
 
-    public FeaturedAdapter(Context context, List<Product> productList, OnFeaturedListener onFeaturedListener) {
+    public FeaturedAdapter(Context context, List<Product> productList, OnFeaturedListener onFeaturedListener)
+    {
         this.context = context;
         this.productList = productList;
         this.onFeaturedListener = onFeaturedListener;
@@ -29,13 +30,17 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
 
     @NonNull
     @Override
-    public FeaturedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FeaturedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
+        // use the featured_product_display layout for the products
         View view = LayoutInflater.from(context).inflate(R.layout.featured_product_display, parent, false);
         return new FeaturedViewHolder(view, onFeaturedListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FeaturedViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FeaturedViewHolder holder, int position)
+    {
+        // set the product image, name, and price
         holder.product_image.setImageResource(productList.get(position).getImage_url());
         holder.product_name.setText(productList.get(position).getProduct_name());
         holder.product_price.setText(productList.get(position).getProduct_price());
@@ -47,13 +52,15 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
         return productList.size();
     }
 
+    // view holder for the Featured Items RecyclerView
     public static final class FeaturedViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         public ImageView product_image;
         public TextView product_name, product_price;
         OnFeaturedListener onFeaturedListener;
 
-        public FeaturedViewHolder(@NonNull View itemView, OnFeaturedListener onFeaturedListener) {
+        public FeaturedViewHolder(@NonNull View itemView, OnFeaturedListener onFeaturedListener)
+        {
             super(itemView);
 
             product_image = itemView.findViewById(R.id.iv_product_image_recyc);
@@ -65,7 +72,9 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
         }
 
         @Override
-        public void onClick(View v) {
+        public void onClick(View v)
+        {
+            // get position of the item clicked
             onFeaturedListener.onFeaturedClick(getAdapterPosition());
         }
     }
